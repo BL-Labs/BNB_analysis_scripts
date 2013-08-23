@@ -47,6 +47,10 @@ orgs_created = FOREACH orgs_created_full
                               created::bnbid as bnbid,
                               labels::label as orgname;
 
+-- Remove duplicates
+persons_authors = DISTINCT persons_authors;
+orgs_created = DISTINCT orgs_created;
+
 -- Clear previous storage directories
 rmf /user/hd/creators
 

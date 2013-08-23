@@ -38,6 +38,8 @@ persons_authors = FOREACH persons_authors_full
                               created::bnbid as bnbid,
                               labels::label as personname;
 
+persons_authors = DISTINCT persons_authors;
+
 -- Authorship from orgs
 
 orgs_created_full = JOIN orgs by org, created by creator, labels by uri;
@@ -46,6 +48,8 @@ orgs_created = FOREACH orgs_created_full
                      GENERATE orgs::org as org,
                               created::bnbid as bnbid,
                               labels::label as orgname;
+
+orgs_created = DISTINCT orgs_created;
 
 -- Clear previous storage directories
 rmf /user/hd/creators
@@ -58,7 +62,7 @@ persons_sortedfreq = ORDER persons_count BY works DESC;
 
 -- Count person contribs
 orgs_created_outputs = GROUP orgs_created by org;
-orgs_count = FOREACH orgs_created_outputs GENERATE group, COUNT(orgs_contrib) as works;
+orgs_count = FOREACH orgs_created_outputs GENERATE group, COUNT(orgs_created) as works;
 
 orgs_sortedfreq = ORDER orgs_count BY works DESC;
 

@@ -47,6 +47,10 @@ orgs_contrib = FOREACH orgs_contrib_full
                               contributed::bnbid as bnbid,
                               labels::label as orgname;
 
+-- Remove duplicates
+persons_contrib = DISTINCT persons_contrib;
+orgs_contrib = DISTINCT orgs_contrib;
+
 -- Clear previous storage directories
 rmf /user/hd/contributions
 
