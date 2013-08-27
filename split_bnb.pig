@@ -1,7 +1,7 @@
-REGISTER pignlproc.jar
+REGISTER pigUtils.jar
 
 raw = LOAD '/user/hd/bnb/BNB*'
-      USING pignlproc.storage.nTriplesLoader()
+      USING pigUtils.ntriples.nTriplesLoader()
       AS (subj: chararray, prop: chararray, obj: chararray, type: int);
 
 titles = FILTER raw 

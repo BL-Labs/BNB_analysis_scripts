@@ -1,7 +1,7 @@
-REGISTER pignlproc.jar
+REGISTER pigUtils.jar
 
 total = LOAD '/user/hd/bnb/*'
-      USING pignlproc.storage.unstrippedNTriplesLoader()
+      USING pigUtils.ntriples.unstrippedNTriplesLoader()
       AS (subj: chararray, prop: chararray, obj: chararray);
 
 sampleset = SAMPLE total 0.1;

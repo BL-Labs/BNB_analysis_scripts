@@ -1,5 +1,3 @@
-REGISTER pignlproc.jar
-
 titles_raw = LOAD '/user/hd/bnbslices/titles/part*'
       AS (subj: chararray, prop: chararray, obj: chararray, type: int);
 
